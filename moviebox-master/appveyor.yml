@@ -1,0 +1,16 @@
+platform:
+  - x64
+init:
+  - git config --global core.autocrlf input
+environment:
+  matrix:
+    - PYTHON: "C:\\Python35-x64"
+    - PYTHON: "C:\\Python36-x64"
+install:
+  - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
+  - python --version
+  - pip install -r requirements.txt
+build_script:
+  - fab test
+  - fab start
+  - fab dist
